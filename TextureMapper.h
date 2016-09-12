@@ -17,8 +17,19 @@ public:
 private:
     void draw_line();
     void init(int argc, char **argv);
-    string file_name;
+    void read_file(string file_name);
+    enum obj_type
+    {
+        GEOMETRIC_VERTEX,
+        TEXTURE_VERTEX,
+        VERTEX_NORMAL,
+        GROUP_NAME,
+        SMOOTHING_GROUP,
+        FACE,
+        MATERIAL_NAME,
+        MATERIAL_LIBRARY
+    };
+    obj_type get_obj_type(string name);
 };
-
 
 #endif //TEXTURE_MAPPING_TEXTUREMAPPER_H
