@@ -7,10 +7,10 @@
 
 #include <vector>
 
-struct GeometricVertex
+class GeometricVertex
 {
     float x, y, z, w;
-
+public:
     GeometricVertex() : GeometricVertex(0, 0, 0, 1)
     {
 
@@ -27,10 +27,10 @@ struct GeometricVertex
     }
 };
 
-struct TextureVertex
+class TextureVertex
 {
     float u, v, w;
-
+public:
     TextureVertex() : TextureVertex(0, 0, 0)
     {
 
@@ -52,10 +52,10 @@ struct TextureVertex
     }
 };
 
-struct VertexNormal
+class VertexNormal
 {
     float i, j, k;
-
+public:
     VertexNormal() : VertexNormal(0, 0, 0)
     {
 
@@ -67,10 +67,10 @@ struct VertexNormal
     }
 };
 
-struct Face
+class Face
 {
     std::vector<int> geometric_vertices, texture_vertices, vertex_normals;
-
+public:
     Face()
     {
 

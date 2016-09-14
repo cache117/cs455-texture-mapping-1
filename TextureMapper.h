@@ -8,6 +8,7 @@
 #include <iostream>
 #include <vector>
 #include "Vertex.h"
+#include "ObjParser.h"
 
 #ifndef TEXTURE_MAPPING_TEXTUREMAPPER_H
 #define TEXTURE_MAPPING_TEXTUREMAPPER_H
@@ -26,25 +27,6 @@ private:
     void draw_line();
     void init(int argc, char **argv);
     void read_file(string file_name);
-    enum obj_type
-    {
-        GEOMETRIC_VERTEX,
-        TEXTURE_VERTEX,
-        VERTEX_NORMAL,
-        GROUP_NAME,
-        SMOOTHING_GROUP,
-        FACE,
-        MATERIAL_NAME,
-        MATERIAL_LIBRARY,
-        COMMENT,
-        OTHER
-    };
-    obj_type get_obj_type(string name);
-    void handle_obj_type(obj_type type, std::stringstream &ss);
-    void handle_geometric_vertex(std::stringstream &ss);
-    void handle_texture_vertex(std::stringstream &ss);
-    void handle_vertex_normal(std::stringstream &ss);
-    void handle_face(std::stringstream &ss);
 
     std::vector<GeometricVertex> geometric_vertices;
     std::vector<TextureVertex> texture_vertices;
