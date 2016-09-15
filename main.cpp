@@ -7,7 +7,7 @@ using std::endl;
 int main(int argc, char** argv)
 {
     TextureMapper mapper(argc, argv);
-    mapper.draw();
+    mapper.run();
     cout << "Hello, World!" << endl;
     return 0;
 }

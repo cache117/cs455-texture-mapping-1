@@ -1,9 +1,9 @@
 //
 // Created by cstaheli on 9/11/2016.
 //
+#include <GL/glut.h>
 #include <string>
 #include <fstream>
-#include <GL/glut.h>
 #include <sstream>
 #include <iostream>
 #include <vector>
@@ -18,15 +18,21 @@ using std::ifstream;
 using std::cout;
 using std::endl;
 
+class TextureMapper;
+
+static TextureMapper *currentInstance;
+
 class TextureMapper
 {
 public:
-    void draw();
     TextureMapper(int argc, char **argv);
+    void draw();
+    void run();
 private:
-    void draw_line();
-    void init(int argc, char **argv);
+    void init();
     void read_file(string file_name);
+    void setupCallback();
+    static void drawCallback();
 
     std::vector<GeometricVertex> geometric_vertices;
     std::vector<TextureVertex> texture_vertices;
