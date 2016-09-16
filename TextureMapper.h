@@ -37,7 +37,6 @@ private:
     void setup_callback();
     static void draw_callback();
     static void process_key_press(unsigned char key, int x, int y);
-    static void init_texturing();
 
     GeometricVertex get_geometric_vertex(int index)
     {

@@ -80,6 +80,19 @@ public:
     { }
 };
 
+class Vertex
+{
+public:
+    int v, vt, vn;
+
+    Vertex(int v, int vt, int vn) : v(v), vt(vt), vn(vn)
+    { }
+
+    Vertex() : Vertex(0, 0, 0)
+    { }
+
+};
+
 class Face
 {
     std::vector<int> geometric_vertices, texture_vertices, vertex_normals;
@@ -117,18 +130,6 @@ public:
     {
         return vertices;
     }
-};
-
-class Vertex
-{
-public:
-    int v, vt, vn;
-    Vertex(int v, int vt, int vn) : v(v), vt(vt), vn(vn)
-    { }
-
-    Vertex() : Vertex(0, 0, 0)
-    { }
-
 };
 
 #endif //TEXTURE_MAPPING_VERTEX_H

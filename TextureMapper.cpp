@@ -31,6 +31,16 @@ void TextureMapper::init()
     //glViewport(0,0, DISPLAY_WIDTH, DISPLAY_HEIGHT);
     //glFrustum(-2, 2, -2, 3, -2, 2);
     glOrtho(-1.0, 1.0, -1.0, 1.0, -1.0, 1.0);
+
+    //setup texturing for later use.
+    glBindTexture(GL_TEXTURE_2D, 1);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_BLEND);
+    glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, 1024, 1024, 0, GL_RGB, GL_FLOAT, nullptr); //TODO nullptr is a bad idea here
 }
 
 TextureMapper::TextureMapper(int argc, char **argv)
@@ -57,10 +67,6 @@ void TextureMapper::draw()
     glColor3f(1.0, 1.0, 1.0);
     glBegin(GL_POLYGON);
 
-    /*glVertex3f(0.25, 0.25, 0.0);
-    glVertex3f(0.75, 0.25, 0.0);
-    glVertex3f(0.75, 0.75, 0.0);
-    glVertex3f(0.25, 0.75, 0.0);*/
     for (Face face : faces)
     {
         draw_face(face);
@@ -70,18 +76,6 @@ void TextureMapper::draw()
     /* Execute all commands */
     glFlush();
     glDisable(GL_TEXTURE_2D);
-}
-
-void TextureMapper::init_texturing()
-{
-    glBindTexture(GL_TEXTURE_2D, 1);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-    glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_BLEND);
-    glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, 1024, 1024, 0, GL_RGB, GL_FLOAT, nullptr); //TODO nullptr is a bad idea here
 }
 
 void TextureMapper::draw_face(Face face)
