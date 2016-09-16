@@ -75,6 +75,7 @@ void ObjParser::handle_geometric_vertex(std::stringstream &ss)
     float x = 0, y = 0, z = 0;
     ss >> x >> y >> z;
     geometric_vertices.push_back(GeometricVertex(x, y, z));
+    compare_vertex_coords(x, y, z);
 }
 
 void ObjParser::handle_texture_vertex(std::stringstream &ss)
@@ -106,4 +107,22 @@ void ObjParser::handle_face(std::stringstream &ss)
         face.add(v - 1, vt - 1, vn - 1);
     } while (!ss.eof());
     faces.push_back(face);
+}
+
+void ObjParser::compare_vertex_coords(float x, float y, float z)
+{
+    if (x < min_x_coord)
+        min_x_coord = x;
+    else if (x > max_x_coord)
+        max_x_coord = x;
+
+    if (y < min_y_coord)
+        min_y_coord = y;
+    else if (y > max_y_coord)
+        max_y_coord = y;
+
+    if (z < min_z_coord)
+        min_z_coord = z;
+    else if (z > max_z_coord)
+        max_z_coord = z;
 }

@@ -38,11 +38,13 @@ public:
     void handle_texture_vertex(std::stringstream &ss);
     void handle_vertex_normal(std::stringstream &ss);
     void handle_face(std::stringstream &ss);
+    void compare_vertex_coords(float x, float y, float z);
 
     std::vector<GeometricVertex> geometric_vertices;
     std::vector<TextureVertex> texture_vertices;
     std::vector<VertexNormal> vertex_normals;
     std::vector<Face> faces;
+    float min_x_coord, max_x_coord, min_y_coord, max_y_coord, min_z_coord, max_z_coord;
 };
 
 
